@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+  <h1>Find your song</h1>
+</div>
+
+<div class="d-flex justify-content-center h-40">
+  <div class="card shadow">
+    <div class="card-body text-center">
+      {{ wtf.quick_form(form) }}
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <div class="d-flex justify-content-center">
+    <p>Note: Type "track" to find the artist, and make sure to write the track name exactly as it appears.</p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <p>Note: Type "artist" to see his discography.</p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <p>Note: Type "track" and "artist" to see track details.</p>
+  </div>
+</div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p class="flash d-flex justify-content-center">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+{% endblock %}
